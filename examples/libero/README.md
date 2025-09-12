@@ -60,6 +60,11 @@ Terminal window 2:
 # Run the server
 uv run scripts/serve_policy.py --env LIBERO
 ```
+**Note:** You can also specify your own checkpoint
+e.g.
+```bash
+uv run scripts/serve_policy.py policy:checkpoint --policy.config=pi0_fast_libero --policy.dir=checkpoints/pi0_fast_libero/my_experiment/20000
+```
 
 ## Results
 

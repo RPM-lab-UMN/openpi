@@ -130,13 +130,21 @@ We will fine-tune the $\pi_{0.5}$ model on the [LIBERO dataset](https://libero-p
 
 ### 1. Convert your data to a LeRobot dataset
 
-We provide a minimal example script for converting LIBERO data to a LeRobot dataset in [`examples/libero/convert_libero_data_to_lerobot.py`](examples/libero/convert_libero_data_to_lerobot.py). You can easily modify it to convert your own data! You can download the raw LIBERO dataset from [here](https://huggingface.co/datasets/openvla/modified_libero_rlds), and run the script with:
+We provide a minimal example script for converting LIBERO data to a LeRobot dataset in [`examples/libero/convert_libero_data_to_lerobot.py`](examples/libero/convert_libero_data_to_lerobot.py). You can easily modify it to convert your own data!  
+You can download the raw LIBERO dataset from [here](https://huggingface.co/datasets/openvla/modified_libero_rlds) by running:
+```bash
+huggingface-cli download openvla/modified_libero_rlds --repo-type dataset --local-dir /path/to/your/desired/dataset/directory
+```
+Before running the conversion script, make sure you change variables like REPO_NAME, RAW_DATASET_NAMES (if running on your own dataset), etc.
+Now you can run the script with:
 
 ```bash
+uv pip install tensorflow tensorflow_datasets
 uv run examples/libero/convert_libero_data_to_lerobot.py --data_dir /path/to/your/libero/data
 ```
+By default, the converted LeRobot dataset will be in '~/.cache/huggingface/lerobot'.
 
-**Note:** If you just want to fine-tune on LIBERO, you can skip this step, because our LIBERO fine-tuning configs point to a pre-converted LIBERO dataset. This step is merely an example that you can adapt to your own data.
+**Note:** If you just want to fine-tune on LIBERO, you can skip this step, because our LIBERO fine-tuning configs point to a pre-converted LIBERO dataset. This step is merely an example that you can adapt to your own data. If you don't want to fine-tune and just want to test out inference of pretrained/pre-finetuned models on LIBERO, skip to step 3.
 
 ### 2. Defining training configs and running training
 
@@ -146,23 +154,30 @@ To fine-tune a base model on your own data, you need to define configs for data 
 - [`LeRobotLiberoDataConfig`](src/openpi/training/config.py): Defines how to process raw LIBERO data from LeRobot dataset for training.
 - [`TrainConfig`](src/openpi/training/config.py): Defines fine-tuning hyperparameters, data config, and weight loader.
 
-We provide example fine-tuning configs for [π₀](src/openpi/training/config.py), [π₀-FAST](src/openpi/training/config.py), and [π₀.₅](src/openpi/training/config.py) on LIBERO data.
+We provide example fine-tuning configs for [π₀](src/openpi/training/config.py), [π₀-FAST](src/openpi/training/config.py), and [π₀.₅](src/openpi/training/config.py) on LIBERO data. Also see the [examples](#more-examples) below.
+  
+**Note:** Be careful on this step!
+- Make sure you understand RepackTransform. See the comments.
+- 'repo_id' in the TrainConfig() instances in config.py should be the path to your dataset (whether or not you chose to --push_to_hub) i.e. probably '~/.cache/huggingface/lerobot/REPO_NAME' (REPO_NAME is from convert_libero_data_to_lerobot.py).
+- Look out for other things to change not listed above. For general guidance, it might be helpful to look at the difference between this repo and the original openpi repo. I've also included a inspect_lerobot_data.py script for inspecting LeRobot datasets.
 
 Before we can run training, we need to compute the normalization statistics for the training data. Run the script below with the name of your training config:
 
 ```bash
 uv run scripts/compute_norm_stats.py --config-name pi05_libero
 ```
-
-Now we can kick off training with the following command (the `--overwrite` flag is used to overwrite existing checkpoints if you rerun fine-tuning with the same config):
+**Note:** We provide functionality for *reloading* normalization statistics for state / action normalization from pre-training. This can be beneficial if you are fine-tuning to a new task on a robot that was part of our pre-training mixture. For more details on how to reload normalization statistics, see the [norm_stats.md](docs/norm_stats.md) file.
+  
+Now we can kick off training with the following command (the `--overwrite` flag is used to overwrite existing checkpoints if you rerun fine-tuning with the same config but `--resume` should be used instead for resuming a run):
 
 ```bash
 XLA_PYTHON_CLIENT_MEM_FRACTION=0.9 uv run scripts/train.py pi05_libero --exp-name=my_experiment --overwrite
 ```
-
+**Note:**
+- --exp-name will be the name of the current run in the 'openpi' project on wandb
+- fsdp_devices in config.py should be tweaked for multi-GPU training
+  
 The command will log training progress to the console and save checkpoints to the `checkpoints` directory. You can also monitor training progress on the Weights & Biases dashboard. For maximally using the GPU memory, set `XLA_PYTHON_CLIENT_MEM_FRACTION=0.9` before running training -- this enables JAX to use up to 90% of the GPU memory (vs. the default of 75%).
-
-**Note:** We provide functionality for *reloading* normalization statistics for state / action normalization from pre-training. This can be beneficial if you are fine-tuning to a new task on a robot that was part of our pre-training mixture. For more details on how to reload normalization statistics, see the [norm_stats.md](docs/norm_stats.md) file.
 
 ### 3. Spinning up a policy server and running inference
 
