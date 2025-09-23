@@ -153,11 +153,13 @@ To fine-tune a base model on your own data, you need to define configs for data 
 - [`LiberoInputs` and `LiberoOutputs`](src/openpi/policies/libero_policy.py): Defines the data mapping from the LIBERO environment to the model and vice versa. Will be used for both, training and inference.
 - [`LeRobotLiberoDataConfig`](src/openpi/training/config.py): Defines how to process raw LIBERO data from LeRobot dataset for training.
 - [`TrainConfig`](src/openpi/training/config.py): Defines fine-tuning hyperparameters, data config, and weight loader.
+- [`RepackTransform`](src/openpi/training/config.py): The values are the keys from your dataset and the keys are the new keys they are remapped to. This is optional; you don't have to remap but just make sure these new keys align with 'data' in libero_policy.py e.g. if you do 'data["observation/image"] in libero_policy.py, make sure the key in RepackTransform is also "observation/image".
 
 We provide example fine-tuning configs for [π₀](src/openpi/training/config.py), [π₀-FAST](src/openpi/training/config.py), and [π₀.₅](src/openpi/training/config.py) on LIBERO data. Also see the [examples](#more-examples) below.
   
 **Note:** Be careful on this step!
-- Make sure you understand RepackTransform. See the comments.
+- Make sure you understand RepackTransform by reading the comments in config.py and transforms.py.
+- Might need to change action_sequence_keys if your dataset uses a different name for actions.
 - 'repo_id' in the TrainConfig() instances in config.py should be the path to your dataset (whether or not you chose to --push_to_hub) i.e. probably '~/.cache/huggingface/lerobot/REPO_NAME' (REPO_NAME is from convert_libero_data_to_lerobot.py).
 - Look out for other things to change not listed above. For general guidance, it might be helpful to look at the difference between this repo and the original openpi repo. I've also included a inspect_lerobot_data.py script for inspecting LeRobot datasets.
 
