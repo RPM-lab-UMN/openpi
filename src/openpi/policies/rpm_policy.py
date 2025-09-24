@@ -83,18 +83,18 @@ class RPMInputs(transforms.DataTransformFn):
 
         # Pad actions to the model action dimension. Keep this for your own dataset.
         # Actions are only available during training.
-        # if "actions" in data:
-        #     inputs["actions"] = data["actions"]
-        if "action" in data:
-            inputs["action"] = data["action"]
+        if "actions" in data:
+            inputs["actions"] = data["actions"]
+        # if "action" in data:
+        #     inputs["action"] = data["action"]
 
         # Pass the prompt (aka language instruction) to the model.
         # Keep this for your own dataset (but modify the key if the instruction is not
         # stored in "prompt"; the output dict always needs to have the key "prompt").
-        # if "prompt" in data:
-        #     inputs["prompt"] = data["prompt"]
-        if "task" in data:
-            inputs["task"] = data["task"]
+        if "prompt" in data:
+            inputs["prompt"] = data["prompt"]
+        # if "task" in data:
+        #     inputs["task"] = data["task"]
 
         return inputs
 
@@ -113,5 +113,5 @@ class RPMOutputs(transforms.DataTransformFn):
         # dimension, we need to now parse out the correct number of actions in the return dict.
         # For Libero, we only return the first 7 actions (since the rest is padding).
         # For your own dataset, replace `7` with the action dimension of your dataset.
-        # return {"actions": np.asarray(data["actions"][:, :7])}
-        return {"action": np.asarray(data["action"][:, :7])}
+        return {"actions": np.asarray(data["actions"][:, :7])}
+        # return {"action": np.asarray(data["action"][:, :7])}

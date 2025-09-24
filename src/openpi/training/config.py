@@ -85,7 +85,7 @@ class DataConfig:
     # Names of keys that will be used by the data loader to generate the action sequence. The length of the
     # sequence is defined by the `action_horizon` field in the model config. This should be adjusted if your
     # LeRobot dataset is using different keys to represent the action.
-    action_sequence_keys: Sequence[str] = ("action",)
+    action_sequence_keys: Sequence[str] = ("actions",)
 
     # If true, will use the LeRobot dataset task to define the prompt.
     prompt_from_task: bool = False
@@ -374,8 +374,8 @@ class LeRobotRPMDataConfig(DataConfigFactory):
                         "observation.image_scene": "observation.image_scene",
                         "observation.image_wrist": "observation.image_wrist",
                         "observation.state": "observation.state",
-                        "action": "action",
-                        "task": "task",
+                        "actions": "action",
+                        "prompt": "task",
                     }
                 )
             ]
@@ -400,6 +400,7 @@ class LeRobotRPMDataConfig(DataConfigFactory):
             repack_transforms=repack_transform,
             data_transforms=data_transforms,
             model_transforms=model_transforms,
+            action_sequence_keys=("action",)
         )
 
 
@@ -700,6 +701,7 @@ _CONFIGS = [
         # Also modify the DataConfig to use the new config you made for your dataset above.
         data=LeRobotLiberoDataConfig(
             repo_id="physical-intelligence/libero",
+            assets=AssetsConfig(assets_dir="gs://openpi-assets/checkpoints/pi0_base/assets", asset_id="ur5e"),
             base_config=DataConfig(
                 # This flag determines whether we load the prompt (i.e. the task instruction) from the
                 # ``task`` field in the LeRobot dataset. If set to True, the prompt will show up in
@@ -721,6 +723,7 @@ _CONFIGS = [
         model=pi0_config.Pi0Config(paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"),
         data=LeRobotLiberoDataConfig(
             repo_id="physical-intelligence/libero",
+            assets=AssetsConfig(assets_dir="gs://openpi-assets/checkpoints/pi0_base/assets", asset_id="ur5e"),
             base_config=DataConfig(prompt_from_task=True),
             extra_delta_transform=True,
         ),
@@ -827,7 +830,32 @@ _CONFIGS = [
         # Below you can define other hyperparameters like the learning rate, number of training steps, etc.
         # Check the base TrainConfig class for a full list of available hyperparameters.
         num_train_steps=30_000,
-    ),    
+    ),
+    TrainConfig(
+        name="pi0_RPM_low_mem_finetune",
+        # Here is an example of loading a pi0 model for LoRA fine-tuning.
+        model=pi0_config.Pi0Config(paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"),
+        # model=pi0_config.Pi0Config(action_dim=7, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"),
+        data=LeRobotRPMDataConfig(
+            repo_id="iamandrewliao/pickblueblock_blackbowl",
+            base_config=DataConfig(prompt_from_task=True),
+            extra_delta_transform=True,
+        ),
+        weight_loader=weight_loaders.CheckpointWeightLoader("gs://openpi-assets/checkpoints/pi0_base/params"),
+        num_train_steps=30_000,
+        # The freeze filter defines which parameters should be frozen during training.
+        # We have a convenience function in the model config that returns the default freeze filter
+        # for the given model config for LoRA finetuning. Just make sure it matches the model config
+        # you chose above.
+        freeze_filter=pi0_config.Pi0Config(
+            paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"
+        ).get_freeze_filter(),
+        # freeze_filter=pi0_config.Pi0Config(
+        #     action_dim=7, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"
+        # ).get_freeze_filter(),        
+        # Turn off EMA for LoRA finetuning.
+        ema_decay=None,
+    ),        
     #
     # Fine-tuning Aloha configs.
     #

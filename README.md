@@ -153,13 +153,23 @@ To fine-tune a base model on your own data, you need to define configs for data 
 - [`LiberoInputs` and `LiberoOutputs`](src/openpi/policies/libero_policy.py): Defines the data mapping from the LIBERO environment to the model and vice versa. Will be used for both, training and inference.
 - [`LeRobotLiberoDataConfig`](src/openpi/training/config.py): Defines how to process raw LIBERO data from LeRobot dataset for training.
 - [`TrainConfig`](src/openpi/training/config.py): Defines fine-tuning hyperparameters, data config, and weight loader.
-- [`RepackTransform`](src/openpi/training/config.py): The values are the keys from your dataset and the keys are the new keys they are remapped to. This is optional; you don't have to remap but just make sure these new keys align with 'data' in libero_policy.py e.g. if you do 'data["observation/image"] in libero_policy.py, make sure the key in RepackTransform is also "observation/image".
+- [`RepackTransform`](src/openpi/training/config.py): The values are the keys from your dataset and the keys are the new keys they are remapped to. This is optional; you don't have to remap but just make sure these new keys align with 'data' in libero_policy.py e.g. if you do 'data["observation/image"] in libero_policy.py, make sure the key in RepackTransform is also "observation/image". You don't want to mess around too much with the keys in RepackTransform though, because subsequent transforms expect certain names e.g. keeping "actions" will save a lot of headache
 
 We provide example fine-tuning configs for [π₀](src/openpi/training/config.py), [π₀-FAST](src/openpi/training/config.py), and [π₀.₅](src/openpi/training/config.py) on LIBERO data. Also see the [examples](#more-examples) below.
   
 **Note:** Be careful on this step!
 - Make sure you understand RepackTransform by reading the comments in config.py and transforms.py.
-- Might need to change action_sequence_keys if your dataset uses a different name for actions.
+- Might need to change action_sequence_keys if your dataset uses a different name for actions. Do this in the return statement in your config i.e.
+```
+return dataclasses.replace(
+    self.create_base_config(assets_dirs, model_config),
+    repack_transforms=repack_transform,
+    data_transforms=data_transforms,
+    model_transforms=model_transforms,
+    action_sequence_keys=("action",)
+)
+```
+as opposed to within class DataConfig. I'm still not sure why but it doesn't work if you change it within DataConfig.
 - 'repo_id' in the TrainConfig() instances in config.py should be the path to your dataset (whether or not you chose to --push_to_hub) i.e. probably '~/.cache/huggingface/lerobot/REPO_NAME' (REPO_NAME is from convert_libero_data_to_lerobot.py).
 - Look out for other things to change not listed above. For general guidance, it might be helpful to look at the difference between this repo and the original openpi repo. I've also included a inspect_lerobot_data.py script for inspecting LeRobot datasets.
 
@@ -168,6 +178,8 @@ Before we can run training, we need to compute the normalization statistics for 
 ```bash
 uv run scripts/compute_norm_stats.py --config-name pi05_libero
 ```
+You may have to change 'keys' in compute_norm_stats.py  
+  
 **Note:** We provide functionality for *reloading* normalization statistics for state / action normalization from pre-training. This can be beneficial if you are fine-tuning to a new task on a robot that was part of our pre-training mixture. For more details on how to reload normalization statistics, see the [norm_stats.md](docs/norm_stats.md) file.
   
 Now we can kick off training with the following command (the `--overwrite` flag is used to overwrite existing checkpoints if you rerun fine-tuning with the same config but `--resume` should be used instead for resuming a run):
@@ -176,8 +188,9 @@ Now we can kick off training with the following command (the `--overwrite` flag 
 XLA_PYTHON_CLIENT_MEM_FRACTION=0.9 uv run scripts/train.py pi05_libero --exp-name=my_experiment --overwrite
 ```
 **Note:**
+- norm stats from the previous step should be saved in "openpi/assets/{config}/{repo_name}"
 - --exp-name will be the name of the current run in the 'openpi' project on wandb
-- fsdp_devices in config.py should be tweaked for multi-GPU training
+- consider changing fsdp_devices in config.py if multi-GPU training and full-parameter fine-tuning (reduces memory footprint)
   
 The command will log training progress to the console and save checkpoints to the `checkpoints` directory. You can also monitor training progress on the Weights & Biases dashboard. For maximally using the GPU memory, set `XLA_PYTHON_CLIENT_MEM_FRACTION=0.9` before running training -- this enables JAX to use up to 90% of the GPU memory (vs. the default of 75%).
 

@@ -187,7 +187,12 @@ class ResizeImages(DataTransformFn):
     width: int
 
     def __call__(self, data: DataDict) -> DataDict:
-        data["image"] = {k: image_tools.resize_with_pad(v, self.height, self.width) for k, v in data["image"].items()}
+        # debugging TypeError: Cannot handle this data type: (1, 1, 3), <i8
+        for k, v in data["image"].items():
+            if v.dtype != np.uint8:
+                v = v.astype(np.uint8)
+            data["image"][k] = image_tools.resize_with_pad(v, self.height, self.width)
+        # data["image"] = {k: image_tools.resize_with_pad(v, self.height, self.width) for k, v in data["image"].items()}
         return data
 
 
