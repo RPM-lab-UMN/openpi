@@ -830,6 +830,7 @@ _CONFIGS = [
         # Below you can define other hyperparameters like the learning rate, number of training steps, etc.
         # Check the base TrainConfig class for a full list of available hyperparameters.
         num_train_steps=30_000,
+        save_interval=500
     ),
     TrainConfig(
         name="pi0_RPM_low_mem_finetune",
@@ -855,6 +856,7 @@ _CONFIGS = [
         # ).get_freeze_filter(),        
         # Turn off EMA for LoRA finetuning.
         ema_decay=None,
+        save_interval=500
     ),        
     #
     # Fine-tuning Aloha configs.

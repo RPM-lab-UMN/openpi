@@ -159,17 +159,14 @@ We provide example fine-tuning configs for [π₀](src/openpi/training/config.py
   
 **Note:** Be careful on this step!
 - Make sure you understand RepackTransform by reading the comments in config.py and transforms.py.
-- Might need to change action_sequence_keys if your dataset uses a different name for actions. Do this in the return statement in your config i.e.
+- If your dataset uses a different name for actions (e.g. 'action'), you need to change [`action_sequence_keys`](src/openpi/training/config.py) even if you have changed RepackTransform because it occurs before RepackTransform during data loading (see [`create_torch_data_loader()`](src/openpi/training/data_loader.py)). Do this in the return statement in your config as opposed to within class DataConfig. i.e.
 ```
 return dataclasses.replace(
-    self.create_base_config(assets_dirs, model_config),
-    repack_transforms=repack_transform,
-    data_transforms=data_transforms,
-    model_transforms=model_transforms,
+    ...
     action_sequence_keys=("action",)
 )
-```
-as opposed to within class DataConfig. I'm still not sure why but it doesn't work if you change it within DataConfig.
+``` or how LeRobotAlohaDataConfig does it.
+I'm still not sure why but it doesn't work if you change it within DataConfig.
 - 'repo_id' in the TrainConfig() instances in config.py should be the path to your dataset (whether or not you chose to --push_to_hub) i.e. probably '~/.cache/huggingface/lerobot/REPO_NAME' (REPO_NAME is from convert_libero_data_to_lerobot.py).
 - Look out for other things to change not listed above. For general guidance, it might be helpful to look at the difference between this repo and the original openpi repo. I've also included a inspect_lerobot_data.py script for inspecting LeRobot datasets.
 
@@ -178,7 +175,6 @@ Before we can run training, we need to compute the normalization statistics for 
 ```bash
 uv run scripts/compute_norm_stats.py --config-name pi05_libero
 ```
-You may have to change 'keys' in compute_norm_stats.py  
   
 **Note:** We provide functionality for *reloading* normalization statistics for state / action normalization from pre-training. This can be beneficial if you are fine-tuning to a new task on a robot that was part of our pre-training mixture. For more details on how to reload normalization statistics, see the [norm_stats.md](docs/norm_stats.md) file.
   
@@ -195,7 +191,32 @@ XLA_PYTHON_CLIENT_MEM_FRACTION=0.9 uv run scripts/train.py pi05_libero --exp-nam
 The command will log training progress to the console and save checkpoints to the `checkpoints` directory. You can also monitor training progress on the Weights & Biases dashboard. For maximally using the GPU memory, set `XLA_PYTHON_CLIENT_MEM_FRACTION=0.9` before running training -- this enables JAX to use up to 90% of the GPU memory (vs. the default of 75%).
 
 ### 3. Spinning up a policy server and running inference
+If you are looking to run inference in LIBERO, skip to that step below.  
+#### Running Jupyter Notebook in VSCode within this openpi uv project
+Locally (not on a server):  
+See https://docs.astral.sh/uv/guides/integration/jupyter/#using-jupyter-from-vs-code  
 
+On a server:
+1. Make sure ipykernel is installed.
+```
+uv pip install ipykernel
+```
+2. Run this code to create a dedicated kernel spec that points to your uv environment.
+```
+uv run python -m ipykernel install --user --name={choose a name}
+```
+3. Reload the VSCode window (in the VSCode Command Palette choose 'Developer: Reload Window'). This will not disrupt ongoing training.
+4. Open your Jupyter Notebook and choose the new kernel you created.  
+
+#### Deploying model (can be used with deploy.py script in SPARK)
+1. Install packages
+```
+uv pip install Pyro5
+uv pip install pyrealsense2==2.54.2.5684
+```
+2. Run cells in [./examples/pi0_deploy.ipynb ](./examples/pi0_deploy.ipynb)
+
+#### Running LIBERO inference ####
 Once training is complete, we can run inference by spinning up a policy server and then querying it from a LIBERO evaluation script. Launching a model server is easy (we use the checkpoint for iteration 20,000 for this example, modify as needed):
 
 ```bash
