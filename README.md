@@ -157,8 +157,8 @@ To fine-tune a base model on your own data, you need to define configs for data 
 
 We provide example fine-tuning configs for [π₀](src/openpi/training/config.py), [π₀-FAST](src/openpi/training/config.py), and [π₀.₅](src/openpi/training/config.py) on LIBERO data. Also see the [examples](#more-examples) below.
   
-**Note:** Be careful on this step!
-- Make sure you understand RepackTransform by reading the comments in config.py and transforms.py.
+**Other changes/notes**
+- You can change 'action_horizon' in [./src/openpi/models/pi0_config.py ](./src/openpi/models/pi0_config.py) to change the size of the action chunk inferred by the model.
 - If your dataset uses a different name for actions (e.g. 'action'), you need to change [`action_sequence_keys`](src/openpi/training/config.py) even if you have changed RepackTransform because it occurs before RepackTransform during data loading (see [`create_torch_data_loader()`](src/openpi/training/data_loader.py)). Do this in the return statement in your config as opposed to within class DataConfig. i.e.
 ```
 return dataclasses.replace(
@@ -192,6 +192,8 @@ The command will log training progress to the console and save checkpoints to th
 
 ### 3. Spinning up a policy server and running inference
 If you are looking to run inference in LIBERO, skip to that step below.  
+
+**Note:** You can change 'action_horizon' in [./src/openpi/models/pi0_config.py ](./src/openpi/models/pi0_config.py) to change the size of the action chunk inferred by the model.
 #### Running Jupyter Notebook in VSCode within this openpi uv project
 Locally (not on a server):  
 See https://docs.astral.sh/uv/guides/integration/jupyter/#using-jupyter-from-vs-code  
@@ -208,13 +210,13 @@ uv run python -m ipykernel install --user --name={choose a name}
 3. Reload the VSCode window (in the VSCode Command Palette choose 'Developer: Reload Window'). This will not disrupt ongoing training.
 4. Open your Jupyter Notebook and choose the new kernel you created.  
 
-#### Deploying model (can be used with deploy.py script in SPARK)
+#### Deploying model with real robot (can be used with deploy.py script in SPARK)
 1. Install packages
 ```
 uv pip install Pyro5
 uv pip install pyrealsense2==2.54.2.5684
 ```
-2. Run cells in [./examples/pi0_deploy.ipynb ](./examples/pi0_deploy.ipynb)
+2. Run cells in [./examples/pi0_deploy.ipynb ](./examples/pi0_deploy.ipynb). This script is for sanity-checking inference and deployment in conjunction with a script that takes inferences and moves the robot.
 
 #### Running LIBERO inference ####
 Once training is complete, we can run inference by spinning up a policy server and then querying it from a LIBERO evaluation script. Launching a model server is easy (we use the checkpoint for iteration 20,000 for this example, modify as needed):
