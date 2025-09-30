@@ -210,13 +210,14 @@ uv run python -m ipykernel install --user --name={choose a name}
 3. Reload the VSCode window (in the VSCode Command Palette choose 'Developer: Reload Window'). This will not disrupt ongoing training.
 4. Open your Jupyter Notebook and choose the new kernel you created.  
 
-#### Deploying model with real robot (can be used with deploy.py script in SPARK)
+#### Deploying model with real robot (can be used with deploy.py script in SPARK project)
 1. Install packages
 ```
 uv pip install Pyro5
 uv pip install pyrealsense2==2.54.2.5684
 ```
-2. Run cells in [./examples/pi0_deploy.ipynb ](./examples/pi0_deploy.ipynb). This script is for sanity-checking inference and deployment in conjunction with a script that takes inferences and moves the robot.
+2. Run relevant cells in [./examples/pi0_deploy.ipynb ](./examples/pi0_deploy.ipynb). This script is for sanity-checking inference and deployment (it takes observations, infers actions, and sends actions over to the deploy.py script from SPARK to execute on the UR5).
+**Note:** Currently, this only works when running pi0_deploy.ipynb on the same machine as where the deploy.py script is running from.
 
 #### Running LIBERO inference ####
 Once training is complete, we can run inference by spinning up a policy server and then querying it from a LIBERO evaluation script. Launching a model server is easy (we use the checkpoint for iteration 20,000 for this example, modify as needed):
