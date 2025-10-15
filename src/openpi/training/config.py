@@ -838,7 +838,7 @@ _CONFIGS = [
         model=pi0_config.Pi0Config(paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora", action_horizon=16),
         # model=pi0_config.Pi0Config(action_dim=7, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"),
         data=LeRobotRPMDataConfig(
-            repo_id="iamandrewliao/pickblueblock_blackbowl_all_quadrants",
+            repo_id="iamandrewliao/pickblueblock_blackbowl_bottomleft_topright",
             base_config=DataConfig(prompt_from_task=True),
             extra_delta_transform=True,
         ),
