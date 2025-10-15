@@ -1,7 +1,7 @@
 '''Modifying policy config for personal dataset
 Notes:
 1. First, dataset needs to be in LeRobot format (see convert_to_lerobot.py in SPARK-Remote/TeleopSoftware/data_collection/)
-2. Then, modify the keys of data['key'] in RPMInputs and RPMOutputs below to match the keys of RepackTransform in config.py. For convenience, I also made the keys of input['key'] the same.
+2. Then, modify the keys of data['key'] in RPMInputs and RPMOutputs below to match the keys of RepackTransform in config.py. For convenience, I also made the keys of inputs['key'] the same.
 3. Finally, modify configs in training/config.py to use RPMInputs and RPMOutputs
 '''
 

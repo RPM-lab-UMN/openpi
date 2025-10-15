@@ -815,7 +815,7 @@ _CONFIGS = [
         # dataset. For your own dataset, you can change the repo_id to point to your dataset.
         # Also modify the DataConfig to use the new config you made for your dataset above.
         data=LeRobotRPMDataConfig(
-            repo_id="iamandrewliao/pickblueblock_blackbowl",
+            repo_id="",  # Add your repo id here
             base_config=DataConfig(
                 # This flag determines whether we load the prompt (i.e. the task instruction) from the
                 # ``task`` field in the LeRobot dataset. If set to True, the prompt will show up in
@@ -835,10 +835,10 @@ _CONFIGS = [
     TrainConfig(
         name="pi0_RPM_low_mem_finetune",
         # Here is an example of loading a pi0 model for LoRA fine-tuning.
-        model=pi0_config.Pi0Config(paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"),
+        model=pi0_config.Pi0Config(paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora", action_horizon=16),
         # model=pi0_config.Pi0Config(action_dim=7, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"),
         data=LeRobotRPMDataConfig(
-            repo_id="iamandrewliao/pickblueblock_blackbowl",
+            repo_id="iamandrewliao/pickblueblock_blackbowl_all_quadrants",
             base_config=DataConfig(prompt_from_task=True),
             extra_delta_transform=True,
         ),
@@ -856,8 +856,31 @@ _CONFIGS = [
         # ).get_freeze_filter(),        
         # Turn off EMA for LoRA finetuning.
         ema_decay=None,
-        save_interval=500
-    ),        
+        save_interval=2000
+    ),
+    TrainConfig(
+        name="pi0_fast_RPM_low_mem_finetune",
+        # Here is an example of loading a pi0-FAST model for LoRA finetuning.
+        # For setting action_dim, action_horizon, and max_token_len, see the comments above.
+        model=pi0_fast.Pi0FASTConfig(
+            action_dim=7, action_horizon=10, max_token_len=180, paligemma_variant="gemma_2b_lora"
+        ),
+        data=LeRobotRPMDataConfig(
+            repo_id="iamandrewliao/pickblueblock_blackbowl_bottomleft_topright",
+            base_config=DataConfig(prompt_from_task=True),
+            extra_delta_transform=True,
+        ),
+        weight_loader=weight_loaders.CheckpointWeightLoader("gs://openpi-assets/checkpoints/pi0_fast_base/params"),
+        num_train_steps=30_000,
+        # Again, make sure to match the model config above when extracting the freeze filter
+        # that specifies which parameters should be frozen during LoRA finetuning.
+        freeze_filter=pi0_fast.Pi0FASTConfig(
+            action_dim=7, action_horizon=10, max_token_len=180, paligemma_variant="gemma_2b_lora"
+        ).get_freeze_filter(),
+        # Turn off EMA for LoRA finetuning.
+        ema_decay=None,
+        save_interval=2000
+    ),
     #
     # Fine-tuning Aloha configs.
     #

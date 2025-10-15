@@ -159,14 +159,13 @@ We provide example fine-tuning configs for [π₀](src/openpi/training/config.py
   
 **Other changes/notes**
 - You can change 'action_horizon' in [./src/openpi/models/pi0_config.py ](./src/openpi/models/pi0_config.py) to change the size of the action chunk inferred by the model.
-- If your dataset uses a different name for actions (e.g. 'action'), you need to change [`action_sequence_keys`](src/openpi/training/config.py) even if you have changed RepackTransform because it occurs before RepackTransform during data loading (see [`create_torch_data_loader()`](src/openpi/training/data_loader.py)). Do this in the return statement in your config as opposed to within class DataConfig. i.e.
+- If your dataset uses a different name for actions (e.g. 'action'), you need to change [`action_sequence_keys`](src/openpi/training/config.py) even if you have changed RepackTransform because it occurs before RepackTransform during data loading (see [`create_torch_data_loader()`](src/openpi/training/data_loader.py)). Do this in the return statement in your config as opposed to within class DataConfig (below) or how LeRobotAlohaDataConfig does it. I'm not sure why but it doesn't work if you change it within DataConfig.
 ```
 return dataclasses.replace(
     ...
     action_sequence_keys=("action",)
 )
-``` or how LeRobotAlohaDataConfig does it.
-I'm still not sure why but it doesn't work if you change it within DataConfig.
+``` 
 - 'repo_id' in the TrainConfig() instances in config.py should be the path to your dataset (whether or not you chose to --push_to_hub) i.e. probably '~/.cache/huggingface/lerobot/REPO_NAME' (REPO_NAME is from convert_libero_data_to_lerobot.py).
 - Look out for other things to change not listed above. For general guidance, it might be helpful to look at the difference between this repo and the original openpi repo. I've also included a inspect_lerobot_data.py script for inspecting LeRobot datasets.
 
