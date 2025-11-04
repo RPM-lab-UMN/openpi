@@ -174,6 +174,11 @@ Before we can run training, we need to compute the normalization statistics for 
 ```bash
 uv run scripts/compute_norm_stats.py --config-name pi05_libero
 ```
+
+**Note:** If you run into the error message below, check if the "datasets" package version is 3.6.0 and reconvert dataset to LeRobot.  
+```
+ValueError: Feature type 'List' not found. Available feature types: ['Value', 'ClassLabel', 'Translation', 'TranslationVariableLanguages', 'LargeList', 'Sequence', 'Array2D', 'Array3D', 'Array4D', 'Array5D', 'Audio', 'Image', 'Video', 'Pdf', 'VideoFrame']
+```
   
 **Note:** We provide functionality for *reloading* normalization statistics for state / action normalization from pre-training. This can be beneficial if you are fine-tuning to a new task on a robot that was part of our pre-training mixture. For more details on how to reload normalization statistics, see the [norm_stats.md](docs/norm_stats.md) file.
   

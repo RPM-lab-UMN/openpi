@@ -859,6 +859,32 @@ _CONFIGS = [
         save_interval=2000
     ),
     TrainConfig(
+        name="pi0_RPM_low_mem_finetune_active",
+        # Here is an example of loading a pi0 model for LoRA fine-tuning.
+        model=pi0_config.Pi0Config(paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora", action_horizon=16),
+        # model=pi0_config.Pi0Config(action_dim=7, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"),
+        data=LeRobotRPMDataConfig(
+            repo_id="iamandrewliao/pickblueblock_blackbowl_active40_bottomleft_topright_certainfailures",
+            base_config=DataConfig(prompt_from_task=True),
+            extra_delta_transform=True,
+        ),
+        weight_loader=weight_loaders.CheckpointWeightLoader("./checkpoints/pi0_RPM_low_mem_finetune/pi0_LoRA_bottomleft_topright/29999/params"),
+        num_train_steps=30_000,
+        # The freeze filter defines which parameters should be frozen during training.
+        # We have a convenience function in the model config that returns the default freeze filter
+        # for the given model config for LoRA finetuning. Just make sure it matches the model config
+        # you chose above.
+        freeze_filter=pi0_config.Pi0Config(
+            paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"
+        ).get_freeze_filter(),
+        # freeze_filter=pi0_config.Pi0Config(
+        #     action_dim=7, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"
+        # ).get_freeze_filter(),        
+        # Turn off EMA for LoRA finetuning.
+        ema_decay=None,
+        save_interval=2000
+    ),
+    TrainConfig(
         name="pi0_fast_RPM_low_mem_finetune",
         # Here is an example of loading a pi0-FAST model for LoRA finetuning.
         # For setting action_dim, action_horizon, and max_token_len, see the comments above.
@@ -866,7 +892,7 @@ _CONFIGS = [
             action_dim=7, action_horizon=10, max_token_len=180, paligemma_variant="gemma_2b_lora"
         ),
         data=LeRobotRPMDataConfig(
-            repo_id="iamandrewliao/pickblueblock_blackbowl_bottomleft_topright",
+            repo_id="iamandrewliao/pickblueblock_blackbowl_active40_bottomleft_topright_certainfailures",
             base_config=DataConfig(prompt_from_task=True),
             extra_delta_transform=True,
         ),
