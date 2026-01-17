@@ -868,7 +868,8 @@ _CONFIGS = [
             base_config=DataConfig(prompt_from_task=True),
             extra_delta_transform=True,
         ),
-        weight_loader=weight_loaders.CheckpointWeightLoader("./checkpoints/pi0_RPM_low_mem_finetune/pi0_LoRA_bottomleft_topright/29999/params"),
+        # weight_loader=weight_loaders.CheckpointWeightLoader("./checkpoints/pi0_RPM_low_mem_finetune/pi0_LoRA_bottomleft_topright/29999/params"),
+        weight_loader=weight_loaders.CheckpointWeightLoader("gs://openpi-assets/checkpoints/pi0_base/params"),
         num_train_steps=30_000,
         # The freeze filter defines which parameters should be frozen during training.
         # We have a convenience function in the model config that returns the default freeze filter

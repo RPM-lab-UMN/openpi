@@ -53,7 +53,19 @@ NOTE: `GIT_LFS_SKIP_SMUDGE=1` is needed to pull LeRobot as a dependency.
 
 **Docker**: As an alternative to uv installation, we provide instructions for installing openpi using Docker. If you encounter issues with your system setup, consider using Docker to simplify installation. See [Docker Setup](docs/docker.md) for more details.
 
-
+## Using LIBERO-Plus instead of LIBERO
+Switch to the use_libero-plus branch (where third_party/libero links to LIBERO-Plus instead of LIBERO):
+```
+git checkout feature/use-libero-plus
+git submodule update --init
+uv pip install -e third_party/libero
+```
+Switch back to the original branch (RPM-dev):
+```
+git checkout RPM-dev
+git submodule update --init
+uv pip install -e third_party/libero
+```
 
 
 ## Model Checkpoints
@@ -130,7 +142,10 @@ We will fine-tune the $\pi_{0.5}$ model on the [LIBERO dataset](https://libero-p
 
 ### 1. Convert your data to a LeRobot dataset
 
-We provide a minimal example script for converting LIBERO data to a LeRobot dataset in [`examples/libero/convert_libero_data_to_lerobot.py`](examples/libero/convert_libero_data_to_lerobot.py). You can easily modify it to convert your own data!  
+We provide a minimal example script for converting LIBERO (RLDS) data to a LeRobot dataset in [`examples/libero/convert_libero_data_to_lerobot.py`](examples/libero/convert_libero_data_to_lerobot.py). You can easily modify it to convert your own data!  
+Some helpful resources (in case your data is not in RLDS format to begin with):
+- https://docs.phospho.ai/learn/lerobot-dataset
+
 You can download the raw LIBERO dataset from [here](https://huggingface.co/datasets/openvla/modified_libero_rlds) by running:
 ```bash
 huggingface-cli download openvla/modified_libero_rlds --repo-type dataset --local-dir /path/to/your/desired/dataset/directory
@@ -175,7 +190,12 @@ Before we can run training, we need to compute the normalization statistics for 
 uv run scripts/compute_norm_stats.py --config-name pi05_libero
 ```
 
-**Note:** If you run into the error message below, check if the "datasets" package version is 3.6.0 and reconvert dataset to LeRobot.  
+**Note:**  
+If you run into the error message below, try adding the tag with the provided instructions.
+```
+Failed to load: Your dataset must be tagged with a codebase version.
+```
+If you run into the error message below, check if the "datasets" package version is 3.6.0 and reconvert dataset to LeRobot.  
 ```
 ValueError: Feature type 'List' not found. Available feature types: ['Value', 'ClassLabel', 'Translation', 'TranslationVariableLanguages', 'LargeList', 'Sequence', 'Array2D', 'Array3D', 'Array4D', 'Array5D', 'Audio', 'Image', 'Video', 'Pdf', 'VideoFrame']
 ```
