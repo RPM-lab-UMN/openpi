@@ -54,9 +54,10 @@ NOTE: `GIT_LFS_SKIP_SMUDGE=1` is needed to pull LeRobot as a dependency.
 **Docker**: As an alternative to uv installation, we provide instructions for installing openpi using Docker. If you encounter issues with your system setup, consider using Docker to simplify installation. See [Docker Setup](docs/docker.md) for more details.
 
 ## Using LIBERO-Plus instead of LIBERO
+LIBERO-Plus is an updated version of LIBERO with factor variations (see [the project page](https://sylvestf.github.io/LIBERO-plus/) for more information). I've made a separate branch for evaluating with LIBERO-Plus.  
 Switch to the use_libero-plus branch (where third_party/libero links to LIBERO-Plus instead of LIBERO):
 ```
-git checkout feature/use-libero-plus
+git checkout use_libero-plus
 git submodule update --init
 uv pip install -e third_party/libero
 ```
