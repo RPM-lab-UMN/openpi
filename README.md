@@ -53,7 +53,19 @@ NOTE: `GIT_LFS_SKIP_SMUDGE=1` is needed to pull LeRobot as a dependency.
 
 **Docker**: As an alternative to uv installation, we provide instructions for installing openpi using Docker. If you encounter issues with your system setup, consider using Docker to simplify installation. See [Docker Setup](docs/docker.md) for more details.
 
-
+## Using LIBERO instead of LIBERO-Plus  
+Switch to the original branch (RPM-dev):
+```
+git checkout RPM-dev
+git submodule update --init
+uv pip install -e third_party/libero
+```
+Switch back to the use_libero-plus branch (where third_party/libero links to LIBERO-Plus instead of LIBERO):
+```
+git checkout use_libero-plus
+git submodule update --init
+uv pip install -e third_party/libero
+```
 
 
 ## Model Checkpoints
