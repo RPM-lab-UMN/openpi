@@ -60,7 +60,7 @@ git checkout RPM-dev
 git submodule update --init
 uv pip install -e third_party/libero
 ```
-Switch back to the use_libero-plus branch (where third_party/libero links to LIBERO-Plus instead of LIBERO):
+Switch back to the use_libero-plus branch (where third_party/libero tracks LIBERO-Plus instead of LIBERO):
 ```
 git checkout use_libero-plus
 git submodule update --init
@@ -130,8 +130,18 @@ We provide detailed step-by-step examples for running inference of our pre-train
 **Test inference without a robot**: We provide a [script](examples/simple_client/README.md) for testing inference without a robot. This script will generate a random observation and run inference with the model. See [here](examples/simple_client/README.md) for more details.
 
 
-
-
+## Getting the LIBERO-Plus dataset
+1. Download the dataset you want from the collection: https://huggingface.co/collections/Sylvest/libero-plus.  
+**Note:** libero_plus_lerobot is the combination of all four suites of training data in libero_plus_data_4suite, meaning that if you're just evaluating on suite X, you can choose to train on just the training data for suite X. Since libero_plus_lerobot is a LeRobot dataset, consider using the huggingface-cli (i.e. huggingface-cli download <namespace>/<dataset_name> --repo-type dataset).  
+```bash
+wget https://huggingface.co/datasets/Sylvest/libero_plus_data_4suite/resolve/main/lerobot/libero_plus_spatial.zip
+```
+2. Unzip the dataset and remove unnecessary empty parent folders, moving the dataset to the '~/.cache/huggingface/lerobot' directory (e.g. '~/.cache/huggingface/lerobot/libero_plus_spatial'). You might need a username directory in between (e.g.' ~/.cache/huggingface/lerobot/iamandrewliao/libero_plus_spatial')
+```bash
+unzip libero_plus_spatial.zip
+mv /full/path/to/dataset ~/.cache/huggingface/lerobot/libero_plus_spatial
+```
+3. Continue on to step 2 of the section below.
 
 ## Fine-Tuning Base Models on Your Own Data
 
@@ -162,10 +172,10 @@ By default, the converted LeRobot dataset will be in '~/.cache/huggingface/lerob
 
 To fine-tune a base model on your own data, you need to define configs for data processing and training. We provide example configs with detailed comments for LIBERO below, which you can modify for your own dataset:
 
-- [`LiberoInputs` and `LiberoOutputs`](src/openpi/policies/libero_policy.py): Defines the data mapping from the LIBERO environment to the model and vice versa. Will be used for both, training and inference.
+- [`LiberoInputs` and `LiberoOutputs`](src/openpi/policies/libero_policy.py): Defines the data mapping from the LIBERO environment to the model and vice versa. Will be used for both, training and inference. If you need to change this file because of different mappings from your dataset to the model, I would suggest instead changing RepackTransform (below).
 - [`LeRobotLiberoDataConfig`](src/openpi/training/config.py): Defines how to process raw LIBERO data from LeRobot dataset for training.
 - [`TrainConfig`](src/openpi/training/config.py): Defines fine-tuning hyperparameters, data config, and weight loader.
-- [`RepackTransform`](src/openpi/training/config.py): The values are the keys from your dataset and the keys are the new keys they are remapped to. This is optional; you don't have to remap but just make sure these new keys align with 'data' in libero_policy.py e.g. if you do 'data["observation/image"] in libero_policy.py, make sure the key in RepackTransform is also "observation/image". You don't want to mess around too much with the keys in RepackTransform though, because subsequent transforms expect certain names e.g. keeping "actions" will save a lot of headache
+- [`RepackTransform`](src/openpi/training/config.py): The values are the keys from your dataset and the keys are the new keys they are remapped to. This is optional; you don't have to remap but just make sure these new keys align with 'data' in {env}_policy.py e.g. if you have 'data["observation/image"] in libero_policy.py, make sure the key in RepackTransform is also "observation/image". You don't want to mess around too much with the *keys* in RepackTransform though, because subsequent transforms expect certain names e.g. keeping the key "actions" will save a lot of headache
 
 We provide example fine-tuning configs for [π₀](src/openpi/training/config.py), [π₀-FAST](src/openpi/training/config.py), and [π₀.₅](src/openpi/training/config.py) on LIBERO data. Also see the [examples](#more-examples) below.
   

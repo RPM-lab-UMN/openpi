@@ -1,0 +1,215 @@
+task_name,base_task,category,add,initstate,language,light,noise,table,view
+turn_on_the_stove_table_1,turn_on_the_stove,Background Textures,,,,,,table_1,
+turn_on_the_stove_table_17,turn_on_the_stove,Background Textures,,,,,,table_17,
+turn_on_the_stove_table_2,turn_on_the_stove,Background Textures,,,,,,table_2,
+turn_on_the_stove_table_23,turn_on_the_stove,Background Textures,,,,,,table_23,
+turn_on_the_stove_table_3,turn_on_the_stove,Background Textures,,,,,,table_3,
+turn_on_the_stove_table_4,turn_on_the_stove,Background Textures,,,,,,table_4,
+turn_on_the_stove_table_5,turn_on_the_stove,Background Textures,,,,,,table_5,
+turn_on_the_stove_tb_13,turn_on_the_stove,Background Textures,,,,,,tb_13,
+turn_on_the_stove_tb_18,turn_on_the_stove,Background Textures,,,,,,tb_18,
+turn_on_the_stove_tb_20,turn_on_the_stove,Background Textures,,,,,,tb_20,
+turn_on_the_stove_tb_6,turn_on_the_stove,Background Textures,,,,,,tb_6,
+turn_on_the_stove_view_0_0_100_0_0_initstate_8,turn_on_the_stove,Robot Initial States,,initstate_8,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_58,turn_on_the_stove,Robot Initial States,,initstate_58,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_118,turn_on_the_stove,Robot Initial States,,initstate_118,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_128,turn_on_the_stove,Robot Initial States,,initstate_128,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_148,turn_on_the_stove,Robot Initial States,,initstate_148,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_158,turn_on_the_stove,Robot Initial States,,initstate_158,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_168,turn_on_the_stove,Robot Initial States,,initstate_168,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_178,turn_on_the_stove,Robot Initial States,,initstate_178,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_188,turn_on_the_stove,Robot Initial States,,initstate_188,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_198,turn_on_the_stove,Robot Initial States,,initstate_198,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_208,turn_on_the_stove,Robot Initial States,,initstate_208,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_218,turn_on_the_stove,Robot Initial States,,initstate_218,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_238,turn_on_the_stove,Robot Initial States,,initstate_238,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_248,turn_on_the_stove,Robot Initial States,,initstate_248,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_258,turn_on_the_stove,Robot Initial States,,initstate_258,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_268,turn_on_the_stove,Robot Initial States,,initstate_268,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_278,turn_on_the_stove,Robot Initial States,,initstate_278,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_288,turn_on_the_stove,Robot Initial States,,initstate_288,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_298,turn_on_the_stove,Robot Initial States,,initstate_298,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_308,turn_on_the_stove,Robot Initial States,,initstate_308,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_318,turn_on_the_stove,Robot Initial States,,initstate_318,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_328,turn_on_the_stove,Robot Initial States,,initstate_328,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_338,turn_on_the_stove,Robot Initial States,,initstate_338,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_358,turn_on_the_stove,Robot Initial States,,initstate_358,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_368,turn_on_the_stove,Robot Initial States,,initstate_368,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_378,turn_on_the_stove,Robot Initial States,,initstate_378,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_388,turn_on_the_stove,Robot Initial States,,initstate_388,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_398,turn_on_the_stove,Robot Initial States,,initstate_398,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_408,turn_on_the_stove,Robot Initial States,,initstate_408,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_418,turn_on_the_stove,Robot Initial States,,initstate_418,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_428,turn_on_the_stove,Robot Initial States,,initstate_428,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_438,turn_on_the_stove,Robot Initial States,,initstate_438,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_448,turn_on_the_stove,Robot Initial States,,initstate_448,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_458,turn_on_the_stove,Robot Initial States,,initstate_458,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_468,turn_on_the_stove,Robot Initial States,,initstate_468,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_478,turn_on_the_stove,Robot Initial States,,initstate_478,,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_488,turn_on_the_stove,Robot Initial States,,initstate_488,,,,,
+turn_on_the_stove_view_0_0_171_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_0_0_171_0_0
+turn_on_the_stove_view_0_0_172_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_0_0_172_0_0
+turn_on_the_stove_view_0_0_173_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_0_0_173_0_0
+turn_on_the_stove_view_0_0_174_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_0_0_174_0_0
+turn_on_the_stove_view_0_0_175_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_0_0_175_0_0
+turn_on_the_stove_view_0_0_176_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_0_0_176_0_0
+turn_on_the_stove_view_0_0_177_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_0_0_177_0_0
+turn_on_the_stove_view_0_0_178_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_0_0_178_0_0
+turn_on_the_stove_view_0_0_179_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_0_0_179_0_0
+turn_on_the_stove_view_0_0_180_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_0_0_180_0_0
+turn_on_the_stove_view_0_0_100_354_4_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_0_0_100_354_4
+turn_on_the_stove_view_0_0_100_354_8_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_0_0_100_354_8
+turn_on_the_stove_view_0_0_100_354_10_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_0_0_100_354_10
+turn_on_the_stove_view_0_0_100_354_350_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_0_0_100_354_350
+turn_on_the_stove_view_0_0_100_354_352_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_0_0_100_354_352
+turn_on_the_stove_view_0_0_100_354_358_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_0_0_100_354_358
+turn_on_the_stove_view_315_0_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_315_0_100_0_0
+turn_on_the_stove_view_315_15_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_315_15_100_0_0
+turn_on_the_stove_view_316_0_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_316_0_100_0_0
+turn_on_the_stove_view_316_15_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_316_15_100_0_0
+turn_on_the_stove_view_317_0_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_317_0_100_0_0
+turn_on_the_stove_view_317_15_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_317_15_100_0_0
+turn_on_the_stove_view_318_0_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_318_0_100_0_0
+turn_on_the_stove_view_318_15_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_318_15_100_0_0
+turn_on_the_stove_view_319_0_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_319_0_100_0_0
+turn_on_the_stove_view_319_15_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_319_15_100_0_0
+turn_on_the_stove_view_320_0_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_320_0_100_0_0
+turn_on_the_stove_view_320_15_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_320_15_100_0_0
+turn_on_the_stove_view_321_0_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_321_0_100_0_0
+turn_on_the_stove_view_321_15_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_321_15_100_0_0
+turn_on_the_stove_view_322_0_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_322_0_100_0_0
+turn_on_the_stove_view_322_15_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_322_15_100_0_0
+turn_on_the_stove_view_323_0_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_323_0_100_0_0
+turn_on_the_stove_view_323_15_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_323_15_100_0_0
+turn_on_the_stove_view_324_0_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_324_0_100_0_0
+turn_on_the_stove_view_324_15_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_324_15_100_0_0
+turn_on_the_stove_view_325_0_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_325_0_100_0_0
+turn_on_the_stove_view_325_15_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_325_15_100_0_0
+turn_on_the_stove_view_326_0_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_326_0_100_0_0
+turn_on_the_stove_view_326_15_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_326_15_100_0_0
+turn_on_the_stove_view_327_0_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_327_0_100_0_0
+turn_on_the_stove_view_327_15_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_327_15_100_0_0
+turn_on_the_stove_view_328_0_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_328_0_100_0_0
+turn_on_the_stove_view_328_15_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_328_15_100_0_0
+turn_on_the_stove_view_329_0_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_329_0_100_0_0
+turn_on_the_stove_view_329_15_100_0_0_initstate_0,turn_on_the_stove,Camera Viewpoints,,,,,,,view_329_15_100_0_0
+turn_on_the_stove_language_1_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_1,,,,
+turn_on_the_stove_language_2_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_2,,,,
+turn_on_the_stove_language_3_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_3,,,,
+turn_on_the_stove_language_4_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_4,,,,
+turn_on_the_stove_language_5_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_5,,,,
+turn_on_the_stove_language_6_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_6,,,,
+turn_on_the_stove_language_7_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_7,,,,
+turn_on_the_stove_language_9_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_9,,,,
+turn_on_the_stove_language_10_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_10,,,,
+turn_on_the_stove_language_11_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_11,,,,
+turn_on_the_stove_language_12_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_12,,,,
+turn_on_the_stove_language_13_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_13,,,,
+turn_on_the_stove_language_15_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_15,,,,
+turn_on_the_stove_language_16_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_16,,,,
+turn_on_the_stove_language_19_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_19,,,,
+turn_on_the_stove_language_20_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_20,,,,
+turn_on_the_stove_language_21_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_21,,,,
+turn_on_the_stove_language_23_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_23,,,,
+turn_on_the_stove_language_24_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_24,,,,
+turn_on_the_stove_language_25_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_25,,,,
+turn_on_the_stove_language_26_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_26,,,,
+turn_on_the_stove_language_27_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_27,,,,
+turn_on_the_stove_language_29_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_29,,,,
+turn_on_the_stove_language_30_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_30,,,,
+turn_on_the_stove_language_31_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_31,,,,
+turn_on_the_stove_language_33_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_33,,,,
+turn_on_the_stove_language_35_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_35,,,,
+turn_on_the_stove_language_36_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_36,,,,
+turn_on_the_stove_language_37_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_37,,,,
+turn_on_the_stove_language_38_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_38,,,,
+turn_on_the_stove_language_41_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_41,,,,
+turn_on_the_stove_language_42_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_42,,,,
+turn_on_the_stove_language_43_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_43,,,,
+turn_on_the_stove_language_44_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_44,,,,
+turn_on_the_stove_language_45_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_45,,,,
+turn_on_the_stove_language_46_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_46,,,,
+turn_on_the_stove_language_47_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_47,,,,
+turn_on_the_stove_language_48_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_48,,,,
+turn_on_the_stove_language_49_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_49,,,,
+turn_on_the_stove_language_50_view_0_0_100_0_0_initstate_0,turn_on_the_stove,Language Instructions,,,language_50,,,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_5,turn_on_the_stove,Sensor Noise,,,,,noise_5,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_6,turn_on_the_stove,Sensor Noise,,,,,noise_6,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_7,turn_on_the_stove,Sensor Noise,,,,,noise_7,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_8,turn_on_the_stove,Sensor Noise,,,,,noise_8,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_9,turn_on_the_stove,Sensor Noise,,,,,noise_9,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_10,turn_on_the_stove,Sensor Noise,,,,,noise_10,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_13,turn_on_the_stove,Sensor Noise,,,,,noise_13,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_14,turn_on_the_stove,Sensor Noise,,,,,noise_14,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_15,turn_on_the_stove,Sensor Noise,,,,,noise_15,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_17,turn_on_the_stove,Sensor Noise,,,,,noise_17,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_18,turn_on_the_stove,Sensor Noise,,,,,noise_18,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_19,turn_on_the_stove,Sensor Noise,,,,,noise_19,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_20,turn_on_the_stove,Sensor Noise,,,,,noise_20,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_27,turn_on_the_stove,Sensor Noise,,,,,noise_27,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_28,turn_on_the_stove,Sensor Noise,,,,,noise_28,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_29,turn_on_the_stove,Sensor Noise,,,,,noise_29,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_30,turn_on_the_stove,Sensor Noise,,,,,noise_30,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_37,turn_on_the_stove,Sensor Noise,,,,,noise_37,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_38,turn_on_the_stove,Sensor Noise,,,,,noise_38,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_39,turn_on_the_stove,Sensor Noise,,,,,noise_39,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_40,turn_on_the_stove,Sensor Noise,,,,,noise_40,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_43,turn_on_the_stove,Sensor Noise,,,,,noise_43,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_44,turn_on_the_stove,Sensor Noise,,,,,noise_44,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_45,turn_on_the_stove,Sensor Noise,,,,,noise_45,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_46,turn_on_the_stove,Sensor Noise,,,,,noise_46,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_47,turn_on_the_stove,Sensor Noise,,,,,noise_47,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_48,turn_on_the_stove,Sensor Noise,,,,,noise_48,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_49,turn_on_the_stove,Sensor Noise,,,,,noise_49,,
+turn_on_the_stove_view_0_0_100_0_0_initstate_0_noise_50,turn_on_the_stove,Sensor Noise,,,,,noise_50,,
+turn_on_the_stove_add_1,turn_on_the_stove,Objects Layout,add_1,,,,,,
+turn_on_the_stove_add_10,turn_on_the_stove,Objects Layout,add_10,,,,,,
+turn_on_the_stove_add_11,turn_on_the_stove,Objects Layout,add_11,,,,,,
+turn_on_the_stove_add_12,turn_on_the_stove,Objects Layout,add_12,,,,,,
+turn_on_the_stove_add_13,turn_on_the_stove,Objects Layout,add_13,,,,,,
+turn_on_the_stove_add_14,turn_on_the_stove,Objects Layout,add_14,,,,,,
+turn_on_the_stove_add_15,turn_on_the_stove,Objects Layout,add_15,,,,,,
+turn_on_the_stove_add_16,turn_on_the_stove,Objects Layout,add_16,,,,,,
+turn_on_the_stove_add_17,turn_on_the_stove,Objects Layout,add_17,,,,,,
+turn_on_the_stove_add_18,turn_on_the_stove,Objects Layout,add_18,,,,,,
+turn_on_the_stove_add_19,turn_on_the_stove,Objects Layout,add_19,,,,,,
+turn_on_the_stove_add_2,turn_on_the_stove,Objects Layout,add_2,,,,,,
+turn_on_the_stove_add_20,turn_on_the_stove,Objects Layout,add_20,,,,,,
+turn_on_the_stove_add_21,turn_on_the_stove,Objects Layout,add_21,,,,,,
+turn_on_the_stove_add_22,turn_on_the_stove,Objects Layout,add_22,,,,,,
+turn_on_the_stove_add_23,turn_on_the_stove,Objects Layout,add_23,,,,,,
+turn_on_the_stove_add_24,turn_on_the_stove,Objects Layout,add_24,,,,,,
+turn_on_the_stove_add_25,turn_on_the_stove,Objects Layout,add_25,,,,,,
+turn_on_the_stove_add_26,turn_on_the_stove,Objects Layout,add_26,,,,,,
+turn_on_the_stove_add_27,turn_on_the_stove,Objects Layout,add_27,,,,,,
+turn_on_the_stove_add_28,turn_on_the_stove,Objects Layout,add_28,,,,,,
+turn_on_the_stove_add_29,turn_on_the_stove,Objects Layout,add_29,,,,,,
+turn_on_the_stove_add_3,turn_on_the_stove,Objects Layout,add_3,,,,,,
+turn_on_the_stove_add_30,turn_on_the_stove,Objects Layout,add_30,,,,,,
+turn_on_the_stove_add_4,turn_on_the_stove,Objects Layout,add_4,,,,,,
+turn_on_the_stove_add_5,turn_on_the_stove,Objects Layout,add_5,,,,,,
+turn_on_the_stove_add_6,turn_on_the_stove,Objects Layout,add_6,,,,,,
+turn_on_the_stove_add_7,turn_on_the_stove,Objects Layout,add_7,,,,,,
+turn_on_the_stove_add_8,turn_on_the_stove,Objects Layout,add_8,,,,,,
+turn_on_the_stove_add_9,turn_on_the_stove,Objects Layout,add_9,,,,,,
+turn_on_the_stove_light_1,turn_on_the_stove,Light Conditions,,,,light_1,,,
+turn_on_the_stove_light_11,turn_on_the_stove,Light Conditions,,,,light_11,,,
+turn_on_the_stove_light_12,turn_on_the_stove,Light Conditions,,,,light_12,,,
+turn_on_the_stove_light_13,turn_on_the_stove,Light Conditions,,,,light_13,,,
+turn_on_the_stove_light_14,turn_on_the_stove,Light Conditions,,,,light_14,,,
+turn_on_the_stove_light_19,turn_on_the_stove,Light Conditions,,,,light_19,,,
+turn_on_the_stove_light_2,turn_on_the_stove,Light Conditions,,,,light_2,,,
+turn_on_the_stove_light_20,turn_on_the_stove,Light Conditions,,,,light_20,,,
+turn_on_the_stove_light_22,turn_on_the_stove,Light Conditions,,,,light_22,,,
+turn_on_the_stove_light_23,turn_on_the_stove,Light Conditions,,,,light_23,,,
+turn_on_the_stove_light_24,turn_on_the_stove,Light Conditions,,,,light_24,,,
+turn_on_the_stove_light_25,turn_on_the_stove,Light Conditions,,,,light_25,,,
+turn_on_the_stove_light_28,turn_on_the_stove,Light Conditions,,,,light_28,,,
+turn_on_the_stove_light_30,turn_on_the_stove,Light Conditions,,,,light_30,,,
+turn_on_the_stove_light_31,turn_on_the_stove,Light Conditions,,,,light_31,,,
+turn_on_the_stove_light_32,turn_on_the_stove,Light Conditions,,,,light_32,,,
+turn_on_the_stove_light_38,turn_on_the_stove,Light Conditions,,,,light_38,,,
+turn_on_the_stove_light_39,turn_on_the_stove,Light Conditions,,,,light_39,,,
+turn_on_the_stove_light_41,turn_on_the_stove,Light Conditions,,,,light_41,,,
+turn_on_the_stove_light_5,turn_on_the_stove,Light Conditions,,,,light_5,,,
+turn_on_the_stove_light_8,turn_on_the_stove,Light Conditions,,,,light_8,,,

@@ -302,10 +302,10 @@ class LeRobotLiberoDataConfig(DataConfigFactory):
             inputs=[
                 _transforms.RepackTransform(
                     {
-                        "observation/image": "image",
-                        "observation/wrist_image": "wrist_image",
-                        "observation/state": "state",
-                        "actions": "actions",
+                        "observation/image": "observation.images.front",
+                        "observation/wrist_image": "observation.images.wrist",
+                        "observation/state": "observation.state",
+                        "actions": "action",
                         "prompt": "prompt",
                     }
                 )
@@ -352,6 +352,7 @@ class LeRobotLiberoDataConfig(DataConfigFactory):
             repack_transforms=repack_transform,
             data_transforms=data_transforms,
             model_transforms=model_transforms,
+            action_sequence_keys=("action",)
         )
 
 
@@ -722,7 +723,7 @@ _CONFIGS = [
         # Here is an example of loading a pi0 model for LoRA fine-tuning.
         model=pi0_config.Pi0Config(paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"),
         data=LeRobotLiberoDataConfig(
-            repo_id="physical-intelligence/libero",
+            repo_id="iamandrewliao/libero_plus_object",
             assets=AssetsConfig(assets_dir="gs://openpi-assets/checkpoints/pi0_base/assets", asset_id="ur5e"),
             base_config=DataConfig(prompt_from_task=True),
             extra_delta_transform=True,
@@ -738,6 +739,7 @@ _CONFIGS = [
         ).get_freeze_filter(),
         # Turn off EMA for LoRA finetuning.
         ema_decay=None,
+        save_interval=2000
     ),
     TrainConfig(
         name="pi0_fast_libero",
@@ -838,7 +840,7 @@ _CONFIGS = [
         model=pi0_config.Pi0Config(paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora", action_horizon=16),
         # model=pi0_config.Pi0Config(action_dim=7, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"),
         data=LeRobotRPMDataConfig(
-            repo_id="iamandrewliao/pickblueblock_blackbowl_all_quadrants",
+            repo_id="iamandrewliao/putgreeninpot_bottomleft_topright",
             base_config=DataConfig(prompt_from_task=True),
             extra_delta_transform=True,
         ),
