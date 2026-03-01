@@ -166,10 +166,10 @@ By default, the converted LeRobot dataset will be in '~/.cache/huggingface/lerob
 
 To fine-tune a base model on your own data, you need to define configs for data processing and training. We provide example configs with detailed comments for LIBERO below, which you can modify for your own dataset:
 
-- [`LiberoInputs` and `LiberoOutputs`](src/openpi/policies/libero_policy.py): Defines the data mapping from the LIBERO environment to the model and vice versa. Will be used for both, training and inference.
+- [`LiberoInputs` and `LiberoOutputs`](src/openpi/policies/libero_policy.py): Defines the data mapping from the LIBERO environment to the model and vice versa. Will be used for both, training and inference. If you need to change this file because of different mappings from your dataset to the model, I would suggest instead changing RepackTransform (below).
 - [`LeRobotLiberoDataConfig`](src/openpi/training/config.py): Defines how to process raw LIBERO data from LeRobot dataset for training.
 - [`TrainConfig`](src/openpi/training/config.py): Defines fine-tuning hyperparameters, data config, and weight loader.
-- [`RepackTransform`](src/openpi/training/config.py): The values are the keys from your dataset and the keys are the new keys they are remapped to. This is optional; you don't have to remap but just make sure these new keys align with 'data' in libero_policy.py e.g. if you do 'data["observation/image"] in libero_policy.py, make sure the key in RepackTransform is also "observation/image". You don't want to mess around too much with the keys in RepackTransform though, because subsequent transforms expect certain names e.g. keeping "actions" will save a lot of headache
+- [`RepackTransform`](src/openpi/training/config.py): The values are the keys from your dataset and the keys are the new keys they are remapped to. This is optional; you don't have to remap but just make sure these new keys align with 'data' in {env}_policy.py e.g. if you have 'data["observation/image"] in libero_policy.py, make sure the key in RepackTransform is also "observation/image". You don't want to mess around too much with the *keys* in RepackTransform though, because subsequent transforms expect certain names e.g. keeping the key "actions" will save a lot of headache
 
 We provide example fine-tuning configs for [π₀](src/openpi/training/config.py), [π₀-FAST](src/openpi/training/config.py), and [π₀.₅](src/openpi/training/config.py) on LIBERO data. Also see the [examples](#more-examples) below.
   
@@ -235,13 +235,14 @@ uv run python -m ipykernel install --user --name={choose a name}
 3. Reload the VSCode window (in the VSCode Command Palette choose 'Developer: Reload Window'). This will not disrupt ongoing training.
 4. Open your Jupyter Notebook and choose the new kernel you created.  
 
-#### Deploying model with real robot (can be used with deploy.py script in SPARK project)
+#### Deploying model with real robot (to be used with deploy.py script in SPARK project)
 1. Install packages
 ```
 uv pip install Pyro5
 uv pip install pyrealsense2==2.54.2.5684
 ```
-2. Run relevant cells in [./examples/pi0_deploy.ipynb ](./examples/pi0_deploy.ipynb). This script is for sanity-checking inference and deployment (it takes observations, infers actions, and sends actions over to the deploy.py script from SPARK to execute on the UR5).
+2. Follow deployment steps in SPARK-Remote/TeleopSoftware/data_collection/README.md
+3. Run relevant cells in [./examples/pi0_deploy.ipynb ](./examples/pi0_deploy.ipynb). This script is for inference and deployment (it takes observations, infers actions, and sends actions over to the deploy.py script from SPARK to execute on the UR5). Make sure to change variables as needed including "config", "checkpoint_dir", "prompt", "SAVE_DIR", etc.
 **Note:** Currently, this only works when running pi0_deploy.ipynb on the same machine as where the deploy.py script is running from.
 
 #### Running LIBERO inference ####
